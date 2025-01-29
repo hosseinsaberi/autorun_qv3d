@@ -62,10 +62,10 @@ word_to_find="plasma_density"
 # This is the major scan; unblock if needed.
 ## Define powers array
 powers=("e14" "e15" "e16" "e17")
-lower=5  # means 5e14
-upper=1  # means 1e17
-step=0.1
-max=9.9
+lower=5.0  # means 5e14
+upper=1.0  # means 1e17
+step=1.0 #0.1
+max=9.0 #9.9
 
 ensity_scan=()
 
@@ -200,8 +200,6 @@ if [ "$2" = "csf3" ]; then
   mv job_IDs.txt "$folder_path"
   conda deactivate
   module unload apps/binapps/anaconda3/2023.09  # Python 3.11.5
-elif [ "$2" = "scarf" ]; then
-  mv job_IDs.txt "$folder_path"
 fi
 
 #conda deactivate

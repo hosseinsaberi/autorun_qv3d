@@ -56,7 +56,7 @@
   P_perCell1 = 16		# particle per cell: 16, 27, 100
   Polarity1 = -1		# charge: 1-proton; -1-electron
   MassAE1 = 5.485e-4		# particle mass in atomic units
-  SkipSaveFlag1 = 1		# (=1) to turn off beam particles saving; would be 0 when generate only driver beam
+  SkipSaveFlag1 = 0		# (=1) to turn off beam particles saving; would be 0 when generate only driver beam
 
 & witness beam: Specie2
   Distribution2 = 1		# Gaussian ellipsoid
@@ -76,8 +76,8 @@
   # Moving window length
   Xlength = 7.
   NxSplit = 2
-  Ylength = 15.
-  Zlength = 15.
+  Ylength = 12.
+  Zlength = 12.
 
   # resolution
   Hx = 0.1
