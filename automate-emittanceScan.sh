@@ -4,7 +4,7 @@
 if [ "$#" -ne 2 ]; then
   echo "Usage: $0 <project-name> <machine-name>"
   echo "project-name = 'FEBE'; 'AWAKE';"
-  echo "machinename=csf3 otherwise the default is workstation"
+  echo "machinename= 'csf3'  'workstation' 'scarf'"
   exit 1
 fi
 
@@ -35,6 +35,13 @@ if [ "$2" = "csf3" ]; then
   qv3d_path="${main_directory}/bin/csf3/qv3dMPIX.e"
 else
   qv3d_path="${main_directory}/bin/workstation/qv3dMPIX.e"
+fi
+
+# Assign command-line arguments to variables
+if [ "$2" = "scarf" ]; then
+  out_directory="/home/vol06/scarf1426/scratch"
+else
+  out_directory=$(pwd)
 fi
 
 # Emittance scan
@@ -92,8 +99,27 @@ for item in "${emitScan[@]}"; do
     current_datetime=$(date +"%Y-%m-%d %H:%M:%S")
     echo "$job_id"
     echo "$job_id" at $current_datetime  >> job_IDs.txt
+  
+  elif [ "$2" = "scarf" ]; then
+    # Replace in the job script
+    # ************************
+#    new_line="#$ -N "Density-$item"              # Set the job's name"
+#    replace='qv3d'
+#    sed -i "/\b$replace\b/c\\$new_line" jobscript-parallel.sh
+
+    #job_id=$(sbatch run_qv3d_on_scarf.sh)
+    job_id=$(sbatch run_qv3d_on_scarf.sh | awk '{print $4}')
+    cd "$main_directory"
+
+    current_datetime=$(date +"%Y-%m-%d %H:%M:%S")
+    echo "$job_id"
+    #echo "$job_id" at $current_datetime  >> job_IDs.txt	 
+    # clear directory
+    # ###############
+#    find . -type f -name '*.dat' -delete
+  
   else
-    echo "Running ..."
+    echo -n "Emittance $item is running ..."
     mpirun -np 32 ./qv3dMPIX.e v.ini > std.out 2> std.err
   fi
   cd ${main_directory}
