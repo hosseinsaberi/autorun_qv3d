@@ -15,7 +15,10 @@
 #SBATCH -n 320 
 
 # Wall clock limit:
-#SBATCH --time=01:00:00  # Example: 1 hour
+###SBATCH --time=01:00:00  # Example: 1 hour
+#SBATCH --time=72:00:00  # Example: 3 days
+
+
 
 # Run the program:
 # ###############

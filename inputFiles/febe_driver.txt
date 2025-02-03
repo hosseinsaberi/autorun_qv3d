@@ -8,7 +8,7 @@
   
 & plasma
 # ------
-  plasma_density = 5.e16 # /cm3
+  plasma_density = 1.e17 # /cm3
   plasma_length  = 0.25   # m
   output_every_what_distance = 0.05 #m
 
@@ -57,8 +57,8 @@
   # Moving window length
   Xlength = 7.
   NxSplit = 2
-  Ylength = 15.
-  Zlength = 15.
+  Ylength = 12.
+  Zlength = 12.
 
   # resolution
   Hx = 0.1
