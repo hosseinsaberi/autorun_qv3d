@@ -61,9 +61,10 @@ word_to_find="plasma_density"
 ##############################################################################
 # This is the major scan; unblock if needed.
 ## Define powers array
-powers=("e14" "e15" "e16" "e17")
-lower=5.0  # means 5e14
-upper=1.0  # means 1e17
+#powers=("e14" "e15" "e16")
+powers=("e15" "e16")
+#lower=7.0  # means 7e14
+#upper=7.0  # means 7e16
 step=1.0 #0.1
 max=9.0 #9.9
 
@@ -79,7 +80,7 @@ for power in "${powers[@]}"; do
       i=$(echo "$i + $step" | bc)
     done
   elif [[ "$power" == "e15" ]]; then
-    # Start from 1e16 to 9e16
+    # Start from 1e15 to 9e15
     i=1
     while (( $(echo "$i <= $max" | bc -l) )); do
       density_scan+=("$i$power")

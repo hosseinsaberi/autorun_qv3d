@@ -76,13 +76,13 @@
   # Moving window length
   Xlength = 7.
   NxSplit = 2
-  Ylength = 12.
-  Zlength = 12.
+  Ylength = 16.
+  Zlength = 16.
 
   # resolution
   Hx = 0.1
-  Hy = 0.05
-  Hz = 0.05
+  Hy = 0.01
+  Hz = 0.01
 
   Ts = 10		# Time step
 
